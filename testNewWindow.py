@@ -6,20 +6,30 @@ import time
 
 class usandotestunitario(unittest.TestCase):
 
+    #inicializa el driver chrome y lo levanta
     def setUp(self):
         self.driver = webdriver.Chrome(executable_path="/home/ricard/Documents/chromedriver")
 
-    def test_buscar_por_Xpath(self):
+    def test_cambiar_ventana(self):
         driver = self.driver
         driver.get("https://www.condisline.com/login")
-        time.sleep(1)
+        time.sleep(3)
 
         self.assertIn("Condisline", driver.title)
+        
+        driver.execute_script("window.open('');")
+        time.sleep(3)
+        driver.switch_to.window(driver.window_handles[1])
+        driver.get("http://stackoverflow.com")
+        time.sleep(3)
+        driver.switch_to.window(driver.window_handles[0])
+        time.sleep(3)
+
         
         usuarioXpath = driver.find_element_by_xpath("//*[@id='userlogin']")
         usuarioXpath.send_keys("ricard.corrales@gmail.com")
         usuarioXpath.send_keys(Keys.ENTER)
-        time.sleep(1)
+        time.sleep(3)
         assert "NO se encontro el elemento" not in driver.page_source
     
         claveXpath = driver.find_element_by_xpath("//*[@id='password']")
