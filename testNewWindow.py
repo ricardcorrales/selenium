@@ -36,19 +36,7 @@ class usandotestunitario(unittest.TestCase):
         claveXpath.send_keys("Mil@38091924")
         claveXpath.send_keys(Keys.ENTER)
         time.sleep(3)
-        ''' claveXpath.send_keys(Keys.ARROW_LEFT)
-        time.sleep(3) '''
-
-
-        ''' pestañaXpath = driver.find_element_by_xpath("//*[@id='mainHeader']/nav/ul/li[2]/span/a")
-            pestañaXpath.send_keys(Keys.ENTER)
-            time.sleep(3) '''
-
-        # ruta absoluta
-        # /html/body/main/div/div/div/div[1]/form/label[2]/input
-        """ accederXpath = driver.find_element_by_xpath("//*[@id='login_form']/div/a/span")
-        accederXpath.send_keys(Keys.ENTER) """
-    
+           
     def tearDown(self) -> None:
         self.driver.close()
         
